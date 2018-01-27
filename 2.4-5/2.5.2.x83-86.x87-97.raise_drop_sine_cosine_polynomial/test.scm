@@ -1,25 +1,4 @@
-;;; Dependencies
-(load "../table.scm")
-(load "./dispatch.scm")
-(load "./generic.scm")
-(load "./scheme-numbers.scm")
-(load "./rational.scm")
-(load "./complex.scm")
-(load "./polynomial.scm")
-
-;;; Installing packages to(?) the table of procedures ("V-table")
-(define proc-table (make-table))
-(define (put op type-tags proc) (put-to proc-table op type-tags proc))
-(define (get op type-tags) (get-from proc-table op type-tags))
-(install-scheme-number-package)
-(install-rational-package)
-(install-rectangular-package)
-(install-polar-package)
-(install-complex-package)
-(install-sparse-package)
-(install-dense-asc-package)
-(install-dense-desc-package)
-(install-polynomial-package)
+(load "./install.scm")
 
 ;;; Testing stuff
 (define (print-nums nums)
