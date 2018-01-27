@@ -18,7 +18,7 @@
 (define D1 (make-decrementer 25))
 (define D2 (make-decrementer 25))
 
-;; W1 and W2 are not the same because them behavior are not.
+;; W1 and W2 are not the same because behavior of them is not.
 (define W1 (make-simplified-withdraw 25))
 (define W2 (make-simplified-withdraw 25))
 
@@ -92,7 +92,7 @@
 (define A2 (make-joint A1 'open-sesam 'rosebud))
 
 
-;;; x8
+;;; x8, 2016
 (define f
   (let ((old-arg 0))
     (lambda (arg)
@@ -104,3 +104,17 @@
 ;; FIXME:
 ;; first call (+ (f 0) (f 1)) returns 0, the next one returns 1
 ;; (+ (f 1) (f 0)) returns the same every time
+
+;;; x8, 2017, november
+(define f
+  ;; initial state
+  (let ((counter 0)
+        (old-arg -1))
+    (lambda (arg)
+      (define res
+        (if (and (= counter 1) (= old-arg 1) (zero? arg))
+            1
+            0))
+      (if (zero? counter) (set! counter 1) (set! counter 0))
+      (set! old-arg arg)
+      res)))
