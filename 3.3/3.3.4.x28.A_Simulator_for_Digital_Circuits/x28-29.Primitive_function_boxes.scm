@@ -19,6 +19,7 @@
   (add-action! in2 and-action)
   'ok)
 
+
 ;;; x28
 (define (or-gate in1 in2 output)
   (define (or-action)
@@ -30,6 +31,21 @@
   (add-action! in1 or-action)
   (add-action! in2 or-action)
   'ok)
+
+
+;;; x29
+(define (or-gate-compound input-1 input-2 output)
+  (let ((inverted-1 (make-wire))
+        (inverted-2 (make-wire))
+        (mul (make-wire)))
+    (inverter input-1 inverted-1)
+    (inverter input-2 inverted-2)
+    (and-gate inverted-1 inverted-2 mul)
+    (inverter mul output)
+    'ok))
+
+;; compound or-gate delay = inverter delay + and-gate delay + inverter delay
+
 
 (define (logical-not s)
   (cond ((= s 1) 0)
