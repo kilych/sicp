@@ -117,4 +117,3 @@
 (define (delete-queue! queue) (queue 'delete-queue!))
 (define (print-queue queue) (queue 'print-queue))
 (define (get-items-in-queue queue) (queue 'get-items))
-

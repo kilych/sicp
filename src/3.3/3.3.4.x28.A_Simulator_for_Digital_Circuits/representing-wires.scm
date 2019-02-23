@@ -1,3 +1,9 @@
+(define-module (representing-wires)
+  #:export (make-wire
+            get-signal
+            set-signal!
+            add-action!))
+
 ;; less verbose naming than in SICP
 (define (make-wire)
   (let ((signal 0)

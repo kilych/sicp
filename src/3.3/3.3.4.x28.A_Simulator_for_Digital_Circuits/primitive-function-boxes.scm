@@ -1,3 +1,9 @@
+(define-module (primitive-function-boxes)
+  #:export (inverter
+            and-gate
+            or-gate
+            or-gate-compound))
+
 (define (inverter input output)
   (define (invert-input)
     (let ((new-value (logical-not (get-signal input))))

@@ -1,7 +1,11 @@
-(load "./Representing_wires.scm")
-(load "./x28.Primitive_function_boxes.scm")
-(load "./adders.scm")
-(load "./my_agenda.scm")
+(add-to-load-path (dirname (current-filename)))
+(use-modules (representing-wires))
+(use-modules (adders))
+
+;; (load "./Representing_wires.scm")
+;; (load "./x28-29.Primitive_function_boxes.scm")
+;; (load "./adders.scm")
+;; (load "./my_agenda.scm")
 
 (define (probe name wire)
   (add-action! wire
