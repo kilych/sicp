@@ -1,5 +1,17 @@
 ;;; My implementation after quick look at SICP implementation
 ;; message passing style in contrast to procedural style in SICP
+
+(define-module (my-agenda)
+  #:export (make-agenda
+            empty-agenda?
+            first-agenda-item
+            remove-first-agenda-item!
+            add-to-agenda!
+            the-agenda
+            after-delay
+            propagate)
+  #:replace (current-time))
+
 (define (make-agenda)
   (let ((time-table (list 0)))
     (define (empty-agenda?) (null? (cdr time-table)))

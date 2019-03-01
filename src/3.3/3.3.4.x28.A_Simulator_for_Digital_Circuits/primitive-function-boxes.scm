@@ -1,8 +1,17 @@
 (define-module (primitive-function-boxes)
+  #:use-module (representing-wires)
+  #:use-module (my-agenda)
   #:export (inverter
             and-gate
             or-gate
-            or-gate-compound))
+            or-gate-compound
+            inverter-delay
+            and-gate-delay
+            or-gate-delay))
+
+(define inverter-delay 0)
+(define and-gate-delay 0)
+(define or-gate-delay 0)
 
 (define (inverter input output)
   (define (invert-input)

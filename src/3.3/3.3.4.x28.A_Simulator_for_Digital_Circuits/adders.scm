@@ -1,7 +1,9 @@
-(use-modules (primitive-function-boxes))
-(use-modules (representing-wires))
+;; (use-modules (primitive-function-boxes))
+;; (use-modules (representing-wires))
 
 (define-module (adders)
+  #:use-module (representing-wires)
+  #:use-module (primitive-function-boxes)
   #:export (half-adder
             full-adder
             ripple-carry-adder))
@@ -18,7 +20,7 @@
   (let ((c-1 (make-wire)) (c-2 (make-wire)) (s-1 (make-wire)))
     (half-adder a b s-1 c-1)
     (half-adder s-1 c-in s c-2)
-    (or-gate c-1 c-2 c)
+    (or-gate c-1 c-2 c-out)
     'ok))
 
 ;;; x30
