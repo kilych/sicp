@@ -4,11 +4,6 @@
 (use-modules (adders))
 (use-modules (my-agenda))
 
-;; (load "./Representing_wires.scm")
-;; (load "./x28-29.Primitive_function_boxes.scm")
-;; (load "./adders.scm")
-;; (load "./my_agenda.scm")
-
 (define (probe name wire)
   (add-action! wire
                (lambda ()

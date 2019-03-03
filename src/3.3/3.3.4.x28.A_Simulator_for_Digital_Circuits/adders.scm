@@ -1,6 +1,3 @@
-;; (use-modules (primitive-function-boxes))
-;; (use-modules (representing-wires))
-
 (define-module (adders)
   #:use-module (representing-wires)
   #:use-module (primitive-function-boxes)

@@ -10,14 +10,13 @@
                  "/src/3.3/3.3.4.x28.A_Simulator_for_Digital_Circuits"))
 
 (use-modules (representing-wires))
-(use-modules (adders))
 
 ;;; Begin test suite
-(test-begin "ripple-carry-adder-test")
+(test-begin "3.3.4.representing-wires-test")
 
 (test-eqv "signal of new wire"
   0
   (get-signal (make-wire)))
 
-(test-end "ripple-carry-adder-test")
+(test-end "3.3.4.representing-wires-test")
 ;;; End test suite
