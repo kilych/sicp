@@ -5,11 +5,6 @@
 ;; Suppress log file output. To write logs, comment out the following line:
 (module-define! (resolve-module '(srfi srfi-64)) 'test-log-to-file #f)
 
-;; To specify log file, uncomment the following lines:
-;; (module-define! (resolve-module '(srfi srfi-64))
-;;                 'test-log-to-file
-;;                 (string-append (current-filename ".log")))
-
 (add-to-load-path
   (string-append (dirname (dirname (current-filename)))
                  "/src/3.3/3.3.4.x28.A_Simulator_for_Digital_Circuits"))
