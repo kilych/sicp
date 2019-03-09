@@ -2,6 +2,7 @@
   #:use-module (representing-wires)
   #:use-module (primitive-function-boxes)
   #:export (half-adder
+            wrong-half-adder            ; 3.x31
             full-adder
             ripple-carry-adder))
 
@@ -20,7 +21,7 @@
     (or-gate c-1 c-2 c-out)
     'ok))
 
-;;; x30
+;;; 3.x30
 (define (ripple-carry-adder a-wires b-wires s-wires c-out)
   (if (null? a-wires)
       'ok
@@ -34,3 +35,18 @@
                             (cdr b-wires)
                             (cdr s-wires)
                             c-in))))
+
+;; 3.x31
+;; When wrong-half-adder is executed on wires with zero initial signal,
+;; internal inverter didn't invert signal from c in e, because set-signal!
+;; action isn't executed when inverter connects c and e.
+;; For example, after setting signal of a-input to 1, signal of sum
+;; should be 1, but signal of e is 0 instead of 1, then signal of sum
+;; remains 0.
+(define (wrong-half-adder a b s c)
+  (let ((d (make-wire)) (e (make-wire)))
+    (wrong-or-gate a b d)
+    (wrong-and-gate a b c)
+    (wrong-inverter c e)
+    (wrong-and-gate d e s)
+    'ok))
