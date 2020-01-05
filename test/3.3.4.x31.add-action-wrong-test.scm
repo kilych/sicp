@@ -7,7 +7,7 @@
 
 (add-to-load-path
   (string-append (dirname (dirname (current-filename)))
-                 "/src/3.3/3.3.4.x28.A_Simulator_for_Digital_Circuits"))
+                 "/src/3.3/3.3.4.x28-31.A_Simulator_for_Digital_Circuits"))
 
 (add-to-load-path
  (string-append (dirname (dirname (current-filename)))

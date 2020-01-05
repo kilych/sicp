@@ -7,7 +7,7 @@
 
 (add-to-load-path
  (string-append (dirname (dirname (current-filename)))
-                "/src/3.3/3.3.4.x28.A_Simulator_for_Digital_Circuits"))
+                "/src/3.3/3.3.4.x28-31.A_Simulator_for_Digital_Circuits"))
 
 (add-to-load-path
  (string-append (dirname (dirname (current-filename)))
@@ -17,7 +17,6 @@
 (use-modules (primitive-function-boxes))
 (use-modules (my-agenda))
 
-;;; Begin test suite
 (test-begin "3.3.4.x28.or-gate-test")
 
 (define in-1 (make-wire))
@@ -46,6 +45,4 @@
 (propagate)
 (test-eq "0 0 -> 0" 0 (get-signal out))
 
-
 (test-end "3.3.4.x28.or-gate-test")
-;;; End test suite

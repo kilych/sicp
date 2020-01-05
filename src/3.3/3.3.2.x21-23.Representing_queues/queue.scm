@@ -1,4 +1,4 @@
-;;; x22
+;;; 3.x22
 (define-module (queue)
   #:export (make-queue
             queue-items ; more readable than "front-ptr" I guess
