@@ -1,4 +1,9 @@
 (add-to-load-path (dirname (current-filename)))
+
+(add-to-load-path
+ (string-append (dirname (dirname (current-filename)))
+                "/3.3.2.x21-23.Representing_queues"))
+
 (use-modules (representing-wires))
 (use-modules (primitive-function-boxes))
 (use-modules (adders))

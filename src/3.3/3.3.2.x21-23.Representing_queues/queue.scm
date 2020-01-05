@@ -2,6 +2,7 @@
 (define-module (queue)
   #:export (make-queue
             queue-items ; more readable than "front-ptr" I guess
+            front-queue
             empty-queue?
             insert-queue!
             delete-queue!
