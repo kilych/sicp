@@ -1,4 +1,3 @@
-;; Load SRFI-64 lightweight testing specification
 (use-modules (srfi srfi-64))
 (use-modules (srfi srfi-1))
 
@@ -17,6 +16,7 @@
 (use-modules (primitive-function-boxes))
 (use-modules (adders))
 (use-modules (my-agenda))
+(use-modules (probe))
 
 (set! inverter-delay 2)
 (set! and-gate-delay 3)
@@ -40,7 +40,6 @@
 
 (propagate)
 
-;;; Begin test suite
 (test-begin "3.3.4.x31.add-action-wrong-test")
 
 (test-eq "sum-1 equals 1"
@@ -52,4 +51,3 @@
   (get-signal s-2))
 
 (test-end "3.3.4.x31.add-action-wrong-test")
-;;; End test suite

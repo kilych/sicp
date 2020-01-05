@@ -3,12 +3,9 @@
 
 (define-module (my-agenda)
   #:use-module (queue)
-  #:export (make-agenda
-            empty-agenda?
-            first-agenda-item
-            remove-first-agenda-item!
-            add-to-agenda!
-            the-agenda
+  #:export (;; exporting make-agenda has no sense since after-delay
+            ;; and propagate use module-wide agenda object
+            ;; make-agenda
             after-delay
             propagate)
   #:replace (current-time))
@@ -53,6 +50,7 @@
             ((eq? m 'add-to-agenda!) add-to-agenda!)
             ((eq? m 'current-time) (car time-table))
             (else (error "In procedure dispatch: undefined operation:" m))))
+
     dispatch))
 
 (define (empty-agenda? agenda) (agenda 'empty-agenda?))
@@ -60,12 +58,13 @@
 (define (remove-first-agenda-item! agenda) (agenda 'remove-first-agenda-item!))
 (define (add-to-agenda! time item agenda)
   ((agenda 'add-to-agenda!) time item))
-(define (current-time agenda) (agenda 'current-time))
 
 (define the-agenda (make-agenda))
 
+(define (current-time) (the-agenda 'current-time))
+
 (define (after-delay delay action)
-  (add-to-agenda! (+ delay (current-time the-agenda))
+  (add-to-agenda! (+ delay (current-time))
                   action
                   the-agenda))
 

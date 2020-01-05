@@ -17,35 +17,28 @@
 (use-modules (primitive-function-boxes))
 (use-modules (adders))
 (use-modules (my-agenda))
-
-(define probe-history '())
-
-(define (probe name wire)
-  (add-action! wire
-               (lambda ()
-                 (set! probe-history
-                   (cons (list name
-                               (current-time the-agenda)
-                               (get-signal wire))
-                         probe-history)))))
+(use-modules (probe))
 
 (set! inverter-delay 2)
 (set! and-gate-delay 3)
 (set! or-gate-delay 5)
-
-;;; Begin test suite
-(test-begin "3.3.4.sample-simulation-test")
 
 (define input-1 (make-wire))
 (define input-2 (make-wire))
 (define sum (make-wire))
 (define carry (make-wire))
 
+(test-begin "3.3.4.sample-simulation-test")
+
 (probe 'sum sum)
-(test-equal "sum init" '(sum 0 0) (car probe-history))
+(test-equal "sum init"
+  '(sum 0 0)
+  (get-last-signal-record))
 
 (probe 'carry carry)
-(test-equal "carry init" '(carry 0 0) (car probe-history))
+(test-equal "carry init"
+  '(carry 0 0)
+  (get-last-signal-record))
 
 (half-adder input-1 input-2 sum carry)
 
@@ -53,16 +46,19 @@
 (propagate)
 (test-equal "sum after setting input-1 to 1"
   '(sum 8 1)
-  (car probe-history))
+  (get-last-signal-record))
 
 (set-signal! input-2 1)
+
 (propagate)
-(test-equal "carry after setting input-2 to 1"
-  '(carry 11 1)
-  (cadr probe-history))
+
 (test-equal "sum after setting input-2 to 1"
   '(sum 16 0)
-  (car probe-history))
+  (get-last-signal-record))
+
+(pop-last-signal-record!)
+(test-equal "carry after setting input-2 to 1"
+  '(carry 11 1)
+  (get-last-signal-record))
 
 (test-end "3.3.4.sample-simulation-test")
-;;; End test suite

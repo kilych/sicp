@@ -8,19 +8,10 @@
 (use-modules (primitive-function-boxes))
 (use-modules (adders))
 (use-modules (my-agenda))
-
-(define (probe name wire)
-  (add-action! wire
-               (lambda ()
-                 (display name)
-                 (display " ")
-                 (display (current-time the-agenda))
-                 (display " New-value = ")
-                 (display (get-signal wire))
-                 (newline))))
+(use-modules (probe))
 
 ;; In contrast to SICP I put definition of the-agenda in the same
-;; place as after-delay.
+;; place as after-delay (my-agenda module).
 
 ;; define doesn't mutate variables exported from module
 (set! inverter-delay 2)

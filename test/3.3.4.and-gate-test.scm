@@ -14,16 +14,7 @@
 (use-modules (representing-wires))
 (use-modules (primitive-function-boxes))
 (use-modules (my-agenda))
-
-(define (probe name wire)
-  (add-action! wire
-               (lambda ()
-                 (display name)
-                 (display " ")
-                 (display (current-time the-agenda))
-                 (display " New-value = ")
-                 (display (get-signal wire))
-                 (newline))))
+(use-modules (probe))
 
 (set! and-gate-delay 1)
 

@@ -36,7 +36,7 @@
 
 (test-eq "or-gate-compound-delay"
   or-gate-compound-delay
-  (current-time the-agenda))
+  (current-time))
 
 (set-signal! in-1 1)
 (set-signal! in-2 0)

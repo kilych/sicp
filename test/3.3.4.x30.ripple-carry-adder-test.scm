@@ -79,7 +79,7 @@
 
 (test-eq "ripple-carry-adder-delay"
   (ripple-carry-adder-delay (length a-wires))
-  (current-time the-agenda))
+  (current-time))
 
 (test-end "3.3.4.x30.ripple-carry-adder-test")
 ;;; End test suite
